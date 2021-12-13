@@ -1,9 +1,12 @@
 package br.com.empresa.gerenciador.servlet;
 
+import java.time.LocalDate;
+
 public class Empresa {
 
 	private Integer id;
 	private String nome;
+	private LocalDate dataAbertura = LocalDate.now();
 
 	public Integer getId() {
 		return id;
@@ -19,6 +22,14 @@ public class Empresa {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public LocalDate getDataAbertura() {
+		return dataAbertura;
+	}
+	
+	public void setDataAbertura(LocalDate dataAbertura) {
+		this.dataAbertura = dataAbertura;
 	}
 
 }

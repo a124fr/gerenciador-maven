@@ -1,7 +1,9 @@
 package br.com.empresa.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,8 +22,14 @@ public class NovaEmpresaServlet extends HttpServlet {
 		System.out.println("Cadastrando nova empresa");
 		
 		String nome = request.getParameter("nome");
+		String paramDataAbertura = request.getParameter("data");
+				
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate dataAbertura = LocalDate.parse(paramDataAbertura, formatter);
+				
 		Empresa empresa = new Empresa();
 		empresa.setNome(nome);
+		empresa.setDataAbertura(dataAbertura);
 		
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
