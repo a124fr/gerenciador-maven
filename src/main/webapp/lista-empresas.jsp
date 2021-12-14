@@ -25,7 +25,8 @@
 
 			<li>
 				${empresa.nome}- ${dataAberturaConvertida} 
-				- <a href="/gerenciador/remove-empresa?id=${empresa.id}">remover</a>	
+				<a href="/gerenciador-maven/mostra-empresa?id=${empresa.id}">editar</a>
+				<a href="/gerenciador-maven/remove-empresa?id=${empresa.id}">remover</a>	
 			</li>
 		</c:forEach>
 	</ul>

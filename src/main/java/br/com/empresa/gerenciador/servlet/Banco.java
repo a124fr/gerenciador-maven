@@ -43,5 +43,16 @@ public class Banco {
 	public List<Empresa> getEmpresas() {
 		return Banco.empresas;
 	}
+
+	public Empresa buscaEmpresaPorId(Integer id) {
+		
+		for(Empresa empresa : this.empresas) {
+			if(empresa.getId() == id) {
+				return empresa;
+			}
+		}
+		
+		return null;
+	}
 	
 }
