@@ -20,12 +20,13 @@
 
 	<ul>
 		<c:forEach items="${empresas}" var="empresa">
-			<fmt:parseDate value="${empresa.dataAbertura}" type="date"
-				pattern="yyyy-MM-dd" var="parsedDate" />
-			<fmt:formatDate value="${parsedDate}" type="date"
-				pattern="dd/MM/yyyy" var="dataAberturaConvertida" />
+			<fmt:parseDate value="${empresa.dataAbertura}" type="date" pattern="yyyy-MM-dd" var="parsedDate" />
+			<fmt:formatDate value="${parsedDate}" type="date" pattern="dd/MM/yyyy" var="dataAberturaConvertida" />
 
-			<li>${empresa.nome}- ${dataAberturaConvertida}</li>
+			<li>
+				${empresa.nome}- ${dataAberturaConvertida} 
+				- <a href="/gerenciador/remove-empresa?id=${empresa.id}">remover</a>	
+			</li>
 		</c:forEach>
 	</ul>
 

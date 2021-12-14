@@ -1,5 +1,5 @@
 # PROJETO WEB
-Tecnologia:
+Tecnologias:
 * html, css e javascript
 * java 11
 * junit
