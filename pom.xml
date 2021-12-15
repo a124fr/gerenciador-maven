@@ -36,6 +36,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>gerenciador-maven</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
