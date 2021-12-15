@@ -10,6 +10,8 @@
 </head>
 <body>
 	<form method="post" action="${linkServletAlteraEmpresa}">
+	
+		<input type="hidden" name="id" value="${empresa.id}" />
 		
 		Nome: <input type="text" name="nome" value="${empresa.nome}" />
 		
