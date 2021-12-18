@@ -12,7 +12,7 @@ import br.com.empresa.gerenciador.modelo.Empresa;
 
 public class MostraEmpresa {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("acao mostrando empresa");
 		
 		String paramId = request.getParameter("id");
@@ -23,7 +23,6 @@ public class MostraEmpresa {
 		
 		request.setAttribute("empresa", empresa);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/form-altera-empresa.jsp");
-		rd.forward(request, response);
+		return "forward:form-altera-empresa.jsp";
 	}
 }

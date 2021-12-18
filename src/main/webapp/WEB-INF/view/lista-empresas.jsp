@@ -17,7 +17,7 @@
 
 	<h1>Lista de Empresas</h1>
 
-	<a href="/gerenciador-maven/form-nova-empresa.jsp">inserir</a>
+	<a href="/gerenciador-maven/entrada?acao=NovaEmpresaForm">inserir</a>
 	<ul>
 		<c:forEach items="${empresas}" var="empresa">
 			<fmt:parseDate value="${empresa.dataAbertura}" type="date" pattern="yyyy-MM-dd" var="parsedDate" />
