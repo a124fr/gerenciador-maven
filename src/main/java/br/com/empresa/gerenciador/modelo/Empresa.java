@@ -1,4 +1,4 @@
-package br.com.empresa.gerenciador.servlet;
+package br.com.empresa.gerenciador.modelo;
 
 import java.time.LocalDate;
 

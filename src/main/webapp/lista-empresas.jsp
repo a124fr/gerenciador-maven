@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page
-	import="java.util.List,br.com.empresa.gerenciador.servlet.Empresa"%>
+<%@page	import="java.util.List,br.com.empresa.gerenciador.modelo.Empresa"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
@@ -18,6 +17,7 @@
 
 	<h1>Lista de Empresas</h1>
 
+	<a href="/gerenciador-maven/form-nova-empresa.jsp">inserir</a>
 	<ul>
 		<c:forEach items="${empresas}" var="empresa">
 			<fmt:parseDate value="${empresa.dataAbertura}" type="date" pattern="yyyy-MM-dd" var="parsedDate" />
@@ -25,8 +25,8 @@
 
 			<li>
 				${empresa.nome}- ${dataAberturaConvertida} 
-				<a href="/gerenciador-maven/mostra-empresa?id=${empresa.id}">editar</a>
-				<a href="/gerenciador-maven/remove-empresa?id=${empresa.id}">remover</a>	
+				<a href="/gerenciador-maven/entrada?acao=MostraEmpresa&id=${empresa.id}">editar</a>
+				<a href="/gerenciador-maven/entrada?acao=RemoveEmpresa&id=${empresa.id}">remover</a>	
 			</li>
 		</c:forEach>
 	</ul>
