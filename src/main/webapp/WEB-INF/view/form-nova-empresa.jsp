@@ -8,6 +8,8 @@
 	<title>Formulário Cadastro de Empresa</title>
 </head>
 <body>
+	<c:import url="logout-parcial.jsp" />
+
 	<form method="post" action="${linkEntradaServlet}">
 		<input type="hidden" name="acao" value="NovaEmpresa" />
 		Nome: <input type="text" name="nome" />

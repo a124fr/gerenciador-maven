@@ -9,6 +9,8 @@
 	<title>Formulário Altera Empresa</title>
 </head>
 <body>
+	<c:import url="logout-parcial.jsp" />
+
 	<form method="post" action="${linkEntradaServlet}">
 		<input type="hidden" name="acao" value="AlteraEmpresa" />
 		<input type="hidden" name="id" value="${empresa.id}" />
