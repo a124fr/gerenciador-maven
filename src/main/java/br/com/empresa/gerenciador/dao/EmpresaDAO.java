@@ -1,6 +1,7 @@
 package br.com.empresa.gerenciador.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,7 +42,63 @@ public class EmpresaDAO {
 			
 			return empresas;
 		} catch (SQLException e) {
-			throw new RuntimeException(e);
+			throw new RuntimeException("Erro ao listar empresas!", e);
 		}
 	}
+
+	public void cadastrar(Empresa empresa) {
+		try (PreparedStatement pstm = this.connection.prepareStatement("INSERT INTO empresa (nome, data_abertura) VALUES(?,?)")){
+			pstm.setString(1, empresa.getNome());
+			pstm.setDate(2, Date.valueOf(empresa.getDataAbertura()));
+			pstm.execute();
+			
+		} catch(SQLException e) {
+			throw new RuntimeException("Erro ao cadastrar empresa!", e);
+		}
+	}
+
+	public void remover(Integer id) {
+		try (PreparedStatement pstm = this.connection.prepareStatement("DELETE FROM empresa WHERE id = ?")){
+			pstm.setInt(1, id);
+			pstm.execute();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException("Erro ao excluir a empresa", e);
+		}
+	}
+
+	public Empresa buscarPorId(Integer id) {
+		Empresa empresa = new Empresa();
+		
+		try (PreparedStatement pstm = this.connection.prepareStatement("SELECT id, nome, data_abertura FROM empresa WHERE id = ?")) {
+			pstm.setInt(1, id);
+			pstm.execute();
+			
+			ResultSet  rst = pstm.getResultSet();
+			if (rst.next()) {
+				empresa.setId(rst.getInt(1));
+				empresa.setNome(rst.getString(2));
+				empresa.setDataAbertura(LocalDate.parse(rst.getString(3), this.formatterDB));
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException("Erro ao consultar a empresa", e);
+		}
+		
+		return empresa;
+	}
+
+	public void alterar(Empresa empresa) {
+		try (PreparedStatement pstm = this.connection.prepareStatement("UPDATE empresa SET nome  = ?, data_abertura = ? WHERE id = ?")) {
+			pstm.setString(1, empresa.getNome());
+			pstm.setDate(2, Date.valueOf(empresa.getDataAbertura()));
+			pstm.setInt(3, empresa.getId());
+			pstm.execute();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException("Erro ao atualizar a empresa", e);
+		}
+	}
+	
+	
 }

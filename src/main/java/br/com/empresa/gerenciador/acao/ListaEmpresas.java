@@ -15,9 +15,7 @@ import br.com.empresa.gerenciador.modelo.Empresa;
 public class ListaEmpresas implements Acao {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("acao listando empresas");
-
-		Connection connection = new ConnectionFactory().getConexao();
+		Connection connection = ConnectionFactory.getConexao();
 		EmpresaDAO dao = new EmpresaDAO(connection);				
 		List<Empresa> empresas = dao.listar();		
 		
