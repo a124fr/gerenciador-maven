@@ -1,10 +1,8 @@
 # PROJETO WEB
 Tecnologias:
-* html, css e javascript
+* html, css e Javascript   
 * Servlet
 * java 11
-* junit
-* mockito
 * maven
 
 
